@@ -27,6 +27,7 @@ export default function () {
         "desktop",
         "modules",
         "cli-tool",
+        "basic",
         "Sample"
       ],
     },

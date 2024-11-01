@@ -31,7 +31,23 @@ class TemplateManager {
       }
 
       // The tool is the name of the .js file
-      const templateConfigFileName = `${answers.tool}.js`;
+      const templateConfigHandlers = {
+        basic: (answers) => `${answers.complexity}.js`,
+        frontend: (answers) => `${answers.tool}.js`,
+        backend: (answers) => `${answers.framework}.js`,
+        fullstack: (answers) => `${answers.stack}.js`,
+        library: (answers) => `${answers.language}.js`,
+        default: (answers) => `${answers.templateVariant}.js`,
+      };
+
+      function getTemplateConfigFileName(answers) {
+        const handler =
+          templateConfigHandlers[answers.projectType] ||
+          templateConfigHandlers.default;
+        return handler(answers);
+      }
+
+      const templateConfigFileName = getTemplateConfigFileName(answers);
 
       const templateConfigPath = path.resolve(
         __dirname,
@@ -39,9 +55,7 @@ class TemplateManager {
         ...pathSegments,
         templateConfigFileName
       );
-
-      // console.log(`Template Config Path: ${templateConfigPath}`);
-
+      
       // Check if the template configuration file exists
       if (!fs.existsSync(templateConfigPath)) {
         throw new Error(

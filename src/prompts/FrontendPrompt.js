@@ -7,7 +7,7 @@ import { fileURLToPath, pathToFileURL } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export default async function (previousAnswers) {
+export default async function () {
   const templatesDir = path.resolve(__dirname, "../templates/frontend");
 
   return [

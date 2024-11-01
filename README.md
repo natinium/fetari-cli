@@ -18,6 +18,45 @@ cd fetari-cli
 npm install
 npm link
 ```
+OR with Yarn
+
+```bash
+git clone https://github.com/natinium/fetari-cli.git
+cd fetari-cli
+yarn install
+yarn link
+```
+After you link a library globally with `yarn link`, you can use it in any project by creating a link to it in that project. Here’s how:
+
+1. **Globally Link the Library** (if you haven’t already):
+
+   Run this in the `fetari-cli` project directory:
+
+   ```bash
+   yarn link
+   ```
+
+   This makes `fetari-cli` available globally, so it can be linked in other projects.
+
+2. **Use the Library in Another Project**:
+
+   In the directory of any project where you want to use `fetari-cli`, link it with:
+
+   ```bash
+   yarn link fetari-cli
+   ```
+
+   This tells Yarn to use the globally linked version of `fetari-cli` in the current project.
+
+3. **Run the CLI Command**:
+
+   After linking, you should be able to use `fetari-cli` as a command from the terminal within any project.
+
+For example:
+
+```bash
+fetari generate
+```
 
 This will globally link the `fetari-cli` command, making it available for use in your terminal.
 
